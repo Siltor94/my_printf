@@ -15,7 +15,10 @@ NAME 	=	a.out
 SRC 	=	flags_1.c \
 			flags_2.c \
 			my_printf.c \
-			put_nbr.c \
+			my_putnbr.c \
+			my_putnbr_base.c \
+			my_putnbr_base_unsigned.c \
+			my_putnbr_base_hexa.c \
 			functions.c
 
 OBJ = $(SRC:.c=.o)
@@ -27,7 +30,7 @@ DYNAMIC = libmy_printf_`uname -m`-`uname -s`.so
 $(NAME):	$(OBJ)
 			$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 
-all: $(NAME)
+all: my_printf_static my_printf_dynamic
 
 clean:
 		rm -f $(OBJ) *~
