@@ -9,30 +9,30 @@
 */
 #include "include.h"
 
-
-int flag_s(va_list ap)
+void flag_s(va_list ap)
 {
 	my_putstr(va_arg(ap, char *));
-	return 0;
 }
 
-int flag_d(va_list ap)
+void flag_d(va_list ap)
 {
 	my_put_nbr(va_arg(ap, int));
-	my_putstr("\n");
-	return 0;
 }
 
-int flag_i(va_list ap)
+void flag_i(va_list ap)
 {
 	my_put_nbr(va_arg(ap, int));
-	my_putstr("\n");
-	return 0;
 }
 
-int flag_c(va_list ap)
+void flag_c(va_list ap)
 {
 	my_putchar(va_arg(ap, int));
-	my_putstr("\n");
-	return 0;
+}
+
+void flag_o(va_list ap)
+{
+	int nb;
+
+	nb = va_arg(ap, int);
+	my_putnbr_base(nb, "01234567");
 }

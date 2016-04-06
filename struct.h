@@ -14,7 +14,7 @@
 struct s_flags
 {
   char option;
-  int  (*tab)(va_list ap);
+  void  (*tab)(va_list ap);
 };
 typedef struct s_flags t_flags;
 

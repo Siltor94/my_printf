@@ -11,12 +11,16 @@
 #include "include.h"
 #include "struct.h"
 
-	t_flags flags[] = {
+t_flags flags[] = {
 		{'s',flag_s},
 		{'d',flag_d},
 		{'i',flag_i},
 		{'c',flag_c},
-	};
+		{'o',flag_o},
+		{'u',flag_u},
+		{'x',flag_x},
+		{'X',flag_x_maj},
+	};	
 
 int my_printf(char * str, ...)
 {
@@ -24,36 +28,26 @@ int my_printf(char * str, ...)
 	int i;
 	int cpt;
 
-	i = 0;
 	cpt = 0;
 	va_start(ap, str);
-	while (str[i])
+	for (i = 0;str[i];i++)
 	{
 		if (str[i] == '%')
 		{
-			while (cpt < 4)
+			while (cpt < 8)
 			{
 				if (str[i + 1] == flags[cpt].option)
 					flags[cpt].tab(ap);
 			cpt++;
-			}	
+			}
+			if (str[i + 1] == '%')
+				my_putchar('%');
+		i++;
+		cpt = 0;	
 		}
 		else
-			my_putchar(str[i+1]);	
-	i++;
+			my_putchar(str[i+1]);
 	}
-	va_end(ap);
 	return i;
-}
-
-int main(void)
-{
-	my_printf("%s", "Bonjour, ceci est un test\n" );
-	my_printf("%d", 65);
-	my_printf("%i", 42);
-	my_printf("%c", 'c');
-
-	my_printf("%s%s", "Bonjour, ceci est un test\n", "iuhgfd" );
-
-	return (0);
+	va_end(ap);
 }

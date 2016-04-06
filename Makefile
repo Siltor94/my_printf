@@ -10,12 +10,19 @@
 
 CC 		= gcc
 CFLAGS 	= -W -Wall -Werror
+LDFLAGS = -shared
 NAME 	=	a.out
 SRC 	=	flags_1.c \
+			flags_2.c \
 			my_printf.c \
+			put_nbr.c \
 			functions.c
 
 OBJ = $(SRC:.c=.o)
+
+STATIC = libmy_printf_`uname -m`-`uname -s`.a
+
+DYNAMIC = libmy_printf_`uname -m`-`uname -s`.so
 
 $(NAME):	$(OBJ)
 			$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
@@ -26,9 +33,15 @@ clean:
 		rm -f $(OBJ) *~
 
 fclean: clean
-		rm -f $(NAME)
+		rm -f $(NAME) $(STATIC) $(DYNAMIC)
 
 re: fclean all
 
-.PHONY: all clean fclean re		
+my_printf_static:	$(OBJ)
+					ar rcs $(STATIC) $(OBJ)
+					ranlib $(STATIC)
 
+my_printf_dynamic:	$(OBJ)
+					$(CC) $(LDFLAGS) -fPIC -L. $(OBJ) -o $(DYNAMIC)							
+
+.PHONY: all clean fclean re my_printf_static
