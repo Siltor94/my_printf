@@ -47,4 +47,4 @@ my_printf_static:	$(OBJ)
 my_printf_dynamic:	$(OBJ)
 					$(CC) $(LDFLAGS) -fPIC -L. $(OBJ) -o $(DYNAMIC)							
 
-.PHONY: all clean fclean re my_printf_static
+.PHONY: all clean fclean re my_printf_static my_printf_dynamic

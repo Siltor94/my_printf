@@ -30,7 +30,7 @@ int my_printf(char * str, ...)
 
 	cpt = 0;
 	va_start(ap, str);
-	for (i = 0;str[i];i++)
+	for (i = 0; str[i]; i++)
 	{
 		if (str[i] == '%')
 		{
@@ -48,6 +48,6 @@ int my_printf(char * str, ...)
 		else
 			my_putchar(str[i+1]);
 	}
-	return i;
+	return (i);
 	va_end(ap);
 }
