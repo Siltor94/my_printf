@@ -12,7 +12,6 @@
 void flag_u(va_list ap)
 {
 	my_put_nbr_unsigned(va_arg(ap, unsigned int));
-	my_putstr("\n");
 }
 
 void flag_x(va_list ap)
@@ -26,6 +25,6 @@ void flag_x_maj(va_list ap)
 {
 	int nb;
 	nb = va_arg(ap, int);
-	my_put_nbr_base_hexa(nb);
+	my_put_nbr_base_hexa_maj(nb);
 }
 

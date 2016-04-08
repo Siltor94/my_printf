@@ -24,6 +24,7 @@ void 	flag_o(va_list ap);
 void 	flag_u(va_list ap);
 void 	flag_x(va_list ap);
 void 	flag_x_maj(va_list ap);
+int     is_num(char str);
 void	my_putchar(char c);
 void	my_putstr(char *str);
 void	my_put_nbr(int nb);

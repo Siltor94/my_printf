@@ -5,7 +5,7 @@
 ** Login   <meurin_r@etna-alternance.net>
 ** 
 ** Started on  Wed Apr  6 14:07:09 2016 MEURIN Remy
-** Last update Wed Apr  6 14:08:21 2016 MEURIN Remy
+** Last update Wed Apr  6 16:14:42 2016 MEURIN Remy
 */
 
 #include "include.h"
@@ -17,9 +17,7 @@ void  my_putnbr_base(int nb, char *base)
   int     power;
 
   if (nb < 0)
-    {
-      my_putnbr_base(nb / my_strlen(base), base);
-    }
+    nb = nb * -1;
   power = 1;
   len_base = my_strlen(base);
   while (nb / power != 0)

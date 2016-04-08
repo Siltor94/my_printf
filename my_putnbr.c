@@ -5,7 +5,7 @@
 ** Login   <meurin_r@etna-alternance.net>
 ** 
 ** Started on  Tue Apr  5 11:01:55 2016 MEURIN Remy
-** Last update Tue Apr  5 11:01:56 2016 MEURIN Remy
+** Last update Wed Apr  6 16:12:55 2016 MEURIN Remy
 */
 #include "include.h"
 
@@ -19,8 +19,8 @@ void	my_put_nbr(int nb)
       my_putchar('-');
       if (nb == -2147483648)
 	{
-	  neg = 1;
-	  nb++;
+    	  neg = 1;
+    	  nb++;
 	}
       nb = nb * -1;
     }

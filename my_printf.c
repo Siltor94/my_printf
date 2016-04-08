@@ -5,9 +5,8 @@
 ** Login   <meurin_r@etna-alternance.net>
 ** 
 ** Started on  Mon Apr  4 10:54:16 2016 MEURIN Remy
-** Last update Mon Apr  4 10:54:48 2016 MEURIN Remy
+** Last update Fri Apr  8 08:53:17 2016 MEURIN Remy
 */
-
 #include "include.h"
 #include "struct.h"
 
@@ -28,17 +27,15 @@ int my_printf(char * str, ...)
 	int i;
 	int cpt;
 
-	cpt = 0;
 	va_start(ap, str);
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] == '%')
 		{
-			while (cpt < 8)
+			for (cpt = 0; cpt < 8; cpt++)
 			{
 				if (str[i + 1] == flags[cpt].option)
 					flags[cpt].tab(ap);
-			cpt++;
 			}
 			if (str[i + 1] == '%')
 				my_putchar('%');
@@ -46,7 +43,7 @@ int my_printf(char * str, ...)
 		cpt = 0;	
 		}
 		else
-			my_putchar(str[i+1]);
+			my_putchar(str[i]);
 	}
 	return (i);
 	va_end(ap);

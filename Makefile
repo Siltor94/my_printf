@@ -11,7 +11,6 @@
 CC 		= gcc
 CFLAGS 	= -W -Wall -Werror
 LDFLAGS = -shared
-NAME 	=	a.out
 SRC 	=	flags_1.c \
 			flags_2.c \
 			my_printf.c \
@@ -21,30 +20,28 @@ SRC 	=	flags_1.c \
 			my_putnbr_base_hexa.c \
 			functions.c
 
-OBJ = $(SRC:.c=.o)
+OBJS = $(SRC:.c=.o)
+OBJ = $(SRC:-fPIC .c=.o)
 
 STATIC = libmy_printf_`uname -m`-`uname -s`.a
 
 DYNAMIC = libmy_printf_`uname -m`-`uname -s`.so
 
-$(NAME):	$(OBJ)
-			$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
-
 all: my_printf_static my_printf_dynamic
 
 clean:
-		rm -f $(OBJ) *~
+		rm -f *.o *~ 
 
 fclean: clean
 		rm -f $(NAME) $(STATIC) $(DYNAMIC)
 
 re: fclean all
 
-my_printf_static:	$(OBJ)
-					ar rcs $(STATIC) $(OBJ)
+my_printf_static:	$(OBJS)
+					ar rcs $(STATIC) $(OBJS)
 					ranlib $(STATIC)
 
 my_printf_dynamic:	$(OBJ)
 					$(CC) $(LDFLAGS) -fPIC -L. $(OBJ) -o $(DYNAMIC)							
 
-.PHONY: all clean fclean re my_printf_static my_printf_dynamic
+.PHONY: all clean fclean re my_printf_static

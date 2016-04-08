@@ -10,7 +10,6 @@
 
 #include "include.h"
 
-
 void	my_putchar(char c)
 {
   write(1, &c, 1);
@@ -35,4 +34,19 @@ int my_strlen(char *str)
       i++;
     }
   return (i);
+}
+
+int     is_num(char str)
+{
+  if (str == '-')
+    {
+      return (0);
+    }
+  else if (str == '+')
+    return (42);
+  if (str >= '0' && str <= '9')
+    {
+      return (1);
+    }
+  return (-1);
 }
